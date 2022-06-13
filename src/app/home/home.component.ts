@@ -85,7 +85,6 @@ export class HomeComponent implements OnInit {
 
   pageChanged(e: number) {
     this.pageNo = e;
-    // this.getMovieGenres();
     this.getMovieList();
   }
 
@@ -101,31 +100,20 @@ export class HomeComponent implements OnInit {
   }
 
   onItemSelect(item: any) {
-    // console.log(item);
-    console.log(this.selectedItems);
     this.getMovieList()
   }
   onSelectAll(items: any) {
-    // console.log(items);
-    // console.log(this.selectedItems);
     setTimeout(() => {
-      console.log(this.selectedItems);
       this.getMovieList()
     }, 0);
   }
 
   onItemDeSelect(items: any) {
-    // console.log(items);
-    console.log(this.selectedItems);
     this.getMovieList()
-
-
   }
 
   onItemDeSelectAll(items: any) {
-    // console.log(items);
     setTimeout(() => {
-      console.log(this.selectedItems);
       this.getMovieList()
     }, 0);
   }
