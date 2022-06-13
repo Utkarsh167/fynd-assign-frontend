@@ -15,6 +15,7 @@ export class AdminLoginComponent implements OnInit {
   emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   passwordRegex = /^(.{8,})/
   message: any;
+  
   // details: { email: any; password: any; };
 
   constructor(private fb: FormBuilder, public router: Router,

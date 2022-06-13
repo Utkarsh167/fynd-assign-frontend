@@ -14,7 +14,7 @@ import {MatInputModule} from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule,  } from '@angular/forms';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { AddMovieComponent } from './add-movie/add-movie.component';
 import { AdminNavBarComponent } from './admin-nav-bar/admin-nav-bar.component';
@@ -22,6 +22,7 @@ import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatPaginatorModule,
     MatCheckboxModule,
     MatSnackBarModule,
+    MatSelectModule,
     NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [],

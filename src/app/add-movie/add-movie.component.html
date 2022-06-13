@@ -10,7 +10,7 @@
             <div style="padding: 16px;">
                 <div fxLayout="column" fxLayoutAlign="center center mrgn-b-md">
                     <div class="justify-content">
-                        <h5>Add new Movie</h5>
+                        <h5>{{movie_id?'Update movie data':'Add new movie'}}</h5>
                     </div>
                 </div>
                 <br>
@@ -154,7 +154,7 @@
 
                     </div>
                 </form>
-                <button mat-raised-button [disabled]="!form.valid" (click)="addMovie()">Submit</button>
+                <button mat-raised-button color="primary" [disabled]="!form.valid" (click)="addMovie()">{{movie_id?'Save':'Add'}}</button>
 
             </div>
         </mat-card>

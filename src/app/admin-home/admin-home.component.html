@@ -35,14 +35,20 @@
             </mat-form-field>
           </form> -->
     
-          <div class="row col-12" style="margin-top: 10px">
+          <div class="row" style="margin-top: 10px">
             <mat-form-field appearance="outline" class=" search--input col-7">
               <input matInput (keydown.space)="$event.preventDefault();" type="text" [(ngModel)]="searchModel"
                   id="search" placeholder="Search to type" autocomplete="off"  (keyup.enter)="searchMovies()">
           </mat-form-field>
-          <button class="col-2" mat-raised-button color="primary" (click)="searchMovies()">Search</button>
-          <div class="col-1"></div>
-          <button class="col-2" mat-raised-button color="primary" (click)="resetFilter()">Reset</button>
+          <div class="col-1">
+          <button  mat-raised-button color="primary" (click)="searchMovies()">Search</button>
+          </div>
+
+          <!-- <div class="col-1"></div> -->
+          <div class="col-1">
+            <button mat-raised-button color="primary" (click)="resetFilter()">Reset</button>
+          </div>
+          
           </div>
          
     <mat-card fxFlex="100" class="mar-0 pad-0">

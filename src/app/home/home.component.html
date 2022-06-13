@@ -1,7 +1,7 @@
 <div id="app">
    
-  <div class="row" style="margin-top: 20px;">
-    <div  class="col-6">
+  <div class="row col-12" style="margin-top: 20px;">
+    <div  class="col-4">
       <ng-multiselect-dropdown
      
       [placeholder]="'Select Genres'"
@@ -15,7 +15,17 @@
     >
     </ng-multiselect-dropdown>
   </div>
-  <div class="col-5"></div>
+  <div class="col-5">
+    <mat-form-field appearance="fill">
+      <mat-label>Sort</mat-label>
+      <mat-select [(ngModel)]="selectedValue" name="food" (selectionChange)="sortMovie($event)">
+        <mat-option *ngFor="let sort of sortOnBasis" [value]="sort.value">
+          {{sort.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="col-2"></div>
   <div class="col-1">
     <button mat-raised-button [routerLink]="['admin-login']"> Admin Login</button>
 
@@ -44,10 +54,15 @@
           <input matInput (keydown.space)="$event.preventDefault();" type="text" [(ngModel)]="searchModel"
               id="search" placeholder="Search to type" autocomplete="off" (keyup.enter)="searchMovies()">
       </mat-form-field>
-      <button class="col-2" mat-raised-button color="primary" (click)="searchMovies()" >Search</button>
-      <div class="col-1"></div>
-      <button class="col-2" mat-raised-button color="primary" (click)="resetFilter()">Reset</button>
-      </div>
+      <div class="col-1">
+        <button  mat-raised-button color="primary" (click)="searchMovies()">Search</button>
+        </div>
+
+        <!-- <div class="col-1"></div> -->
+        <div class="col-1">
+          <button mat-raised-button color="primary" (click)="resetFilter()">Reset</button>
+        </div>
+            </div>
      
 
     <div class="container">

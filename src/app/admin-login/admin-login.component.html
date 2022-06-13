@@ -1,77 +1,96 @@
-<div class="gene-login gene-session pad-y-xl" style="background: #ddd">
-    <div fxLayout="row" fxLayoutAlign="center start">
+<div class="container-fluid">
+    <div class="row no-gutter">
+        <!-- The image half -->
+        <div class="col-md-6 d-none d-md-flex bg-image"></div>
 
-        <div fxLayout="column" fxFlex.xl="540px" fxFlex.lg="540px" fxFlex.md="540px" fxFlex.sm="540px" fxFlex.xs="100">
 
-            <mat-card class="gene-login-wrapper">
-                <div fxLayout="column" fxLayoutAlign="center center mrgn-b-md" style="background:#000">
-                    <div class="login-logo justify-content">
-                        <img src="assets/img/redeem.png">
-                    </div>
-                </div>
-                <div style="padding: 16px;">
-                    <div fxLayout="column" fxLayoutAlign="center center mrgn-b-md">
-                        <div class="justify-content">
-                            <h5>Admin Login</h5>
+        <!-- The content half -->
+        <div class="col-md-6 bg-light">
+            <div class="login d-flex align-items-center py-5">
+
+                <!-- Demo content-->
+                <div class="container">
+                    <a class="nav-link"  [routerLink]="['']">Home</a>
+
+                    <div class="row">
+                        <div class="col-lg-10 col-xl-7 mx-auto">
+                            <h3 class="display-4">Admin Login!</h3>
+                            <p class="text-muted mb-4">Login using the credentials provided for admin</p>
+
+                            <form [formGroup]="form">
+                                <div class="form-group mb-3">
+                                    <input id="inputEmail" formControlName="email" type="email"
+                                        placeholder="Email address" required="" autofocus=""
+                                        class="form-control rounded-pill border-0 shadow-sm px-4">
+                                </div>
+                                <div class="message-block">
+                                    <small class="gene-block"
+                                        *ngIf="form.controls['email'].hasError('required') && form.controls['email'].touched"
+                                        class="warn-text error-message">
+                                        Please enter email.
+                                    </small>
+                                    <small class="gene-block"
+                                        *ngIf="form.controls['email'].hasError('whitespace') && form.controls['email'].touched"
+                                        class="warn-text error-message">
+                                        {{message.error[2]}}
+                                    </small>
+
+
+                                    <small class="gene-block"
+                                        *ngIf="form.controls['email'].hasError('accountNotVerified')"
+                                        class="warn-text error-message">
+                                        {{message.error[12]}}
+                                    </small>
+                                    <small class="gene-block"
+                                        *ngIf="form.controls['email'].hasError('invalidEmail') && form.controls['email'].touched"
+                                        class="warn-text error-message">
+                                        {{message.error[13]}}
+                                    </small>
+
+                                    <small class="gene-block" *ngIf="form.controls['email'].hasError('userNotActive')"
+                                        class="warn-text error-message">
+                                        {{message.error[23]}}
+                                    </small>
+
+                                    <small class="gene-block"
+                                        *ngIf="form.controls['email'].hasError('pattern') && form.controls['email'].touched"
+                                        class="warn-text error-message">
+                                        {{message.error[2]}}
+                                    </small>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <input id="inputPassword" type="password" (keydown.space)="$event.preventDefault();"
+                                        (keyup.enter)="login(form.value)" maxlength="16" name="password"
+                                        formControlName="password" placeholder="Password" required=""
+                                        class="form-control rounded-pill border-0 shadow-sm px-4 text-primary">
+                                </div>
+                                <div class="message-block">
+                                    <small class="gene-block"
+                                        *ngIf="form.controls['password'].hasError('required') && form.controls['password'].touched"
+                                        class="warn-text error-message">
+                                        Please enter password.
+                                    </small>
+                                    <small class="gene-block"
+                                        *ngIf="form.controls['password'].hasError('invalidPassword') "
+                                        class="warn-text error-message">
+                                        {{message.error[14]}}
+                                    </small>
+
+                                </div>
+
+
+                                <button type="submit" mat-raised-button [disabled]="!form.valid"
+                                    (click)="login(form.value)"
+                                    class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm">Sign
+                                    in</button>
+
+                            </form>
                         </div>
                     </div>
-                    <br>
-                    <form [formGroup]="form">
-                        <div fxLayout="column" fxLayoutAlign="start stretch">
+                </div><!-- End -->
 
-                            <mat-form-field appearance="outline">
-                                <mat-label>Enter email</mat-label>
-                                <input matInput type="email" name="email" formControlName="email">
-                            </mat-form-field>
-                            <div class="message-block">
-                                <small class="gene-block" *ngIf="form.controls['email'].hasError('required') && form.controls['email'].touched" class="warn-text error-message">
-                                    Please enter email.
-                                </small>
-                                <small class="gene-block" *ngIf="form.controls['email'].hasError('whitespace') && form.controls['email'].touched" class="warn-text error-message">
-                                    {{message.error[2]}}
-                                </small>
-                            
-                            
-                                <small class="gene-block" *ngIf="form.controls['email'].hasError('accountNotVerified')" class="warn-text error-message">
-                                    {{message.error[12]}}
-                                </small>
-                                <small class="gene-block" *ngIf="form.controls['email'].hasError('invalidEmail') && form.controls['email'].touched" class="warn-text error-message">
-                                    {{message.error[13]}}
-                                </small>
+            </div>
+        </div><!-- End -->
 
-                                <small class="gene-block" *ngIf="form.controls['email'].hasError('userNotActive')" class="warn-text error-message">
-                                    {{message.error[23]}}
-                                </small>
-                            
-                                <small class="gene-block" *ngIf="form.controls['email'].hasError('pattern') && form.controls['email'].touched" class="warn-text error-message">
-                                    {{message.error[2]}}
-                                </small>
-                            </div>
-
-                            <mat-form-field appearance="outline">
-                                <mat-label>Enter Password</mat-label>
-                                <input matInput (keydown.space)="$event.preventDefault();" (keyup.enter)="login(form.value)" maxlength="16" type="password" name="password" formControlName="password">
-                            </mat-form-field>
-                            <div class="message-block">
-                                <small class="gene-block" *ngIf="form.controls['password'].hasError('required') && form.controls['password'].touched" class="warn-text error-message">
-                                    Please enter password.
-                                </small>
-                                <small class="gene-block" *ngIf="form.controls['password'].hasError('invalidPassword') " class="warn-text error-message">
-                                    {{message.error[14]}}
-                                </small>
-                                
-                            </div>
-
-                            <!-- <div fxLayout="row" fxLayoutAlign="start center">
-                                <span fxFlex></span>
-                                <a [routerLink]="['/forgot-password']">Forgot Password?</a>
-                            </div> -->
-                            <button type="button" mat-raised-button [disabled]="!form.valid" (click)="login(form.value)">Login</button>
-                           
-                        </div>
-                    </form>
-                </div>
-            </mat-card>
-        </div>
     </div>
 </div>

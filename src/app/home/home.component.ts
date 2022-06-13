@@ -10,6 +10,15 @@ import { IDropdownSettings } from 'ng-multiselect-dropdown';
 export class HomeComponent implements OnInit {
 
   movieList: any=[];
+  sortOnBasis = [
+    {value: {sortBy:'99popularity', sortOrder:-1}, viewValue: 'Popularity High to Low'},
+    {value: {sortBy:'99popularity', sortOrder:1}, viewValue: 'Popularity Low to High'},
+    {value: {sortBy:'director', sortOrder:1}, viewValue: 'Director name Ascending'},
+    {value: {sortBy:'director', sortOrder:-1}, viewValue: 'Director name Descending'},
+    {value: {sortBy:'name', sortOrder:1}, viewValue: 'Movie name Ascending'},
+    {value: {sortBy:'name', sortOrder:-1}, viewValue: 'Movie name Descending'},
+  ];
+  selectedValue;
   constructor(private apiService: ApiService) { }
   total = 0;
   pageNo = 1;
@@ -33,12 +42,17 @@ export class HomeComponent implements OnInit {
     this.getMovieGenres();
   }
 
+  sortMovie(e){
+    console.log(e);
+    this.getMovieList();
+  }
   getMovieList() {
     let genres: any = [];
     this.selectedItems.forEach((element: any) => {
       genres.push(element.name)
     });
-    let req_var = { limit: this.limit, page: this.pageNo, genre: genres, search: this.searchModel };
+    let req_var = { limit: this.limit, page: this.pageNo, genre: genres, search: this.searchModel, sort:this.selectedValue };
+    console.log(req_var);
     this.apiService.getMovieListWithFilter(req_var).subscribe(res => {
       console.log(res);
       if (res.msg[0].totalCount.length > 0) {
@@ -65,6 +79,7 @@ export class HomeComponent implements OnInit {
     this.pageNo = 1;
     this.searchModel = '';
     this.selectedItems = [];
+    this.selectedValue=null;
     this.getMovieList();
   }
 
