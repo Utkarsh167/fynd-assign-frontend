@@ -1,0 +1,52 @@
+.gene-login-wrapper {
+    border-radius: 0px !important;
+    padding: 0rem 0rem !important;
+}
+.gene-login-wrapper .login-logo {
+    margin-top: 1rem;
+}
+.gene-login-wrapper .login-logo img {
+    margin-bottom: 2rem;
+}
+.gene-login-wrapper h5 {
+    font-family: Roboto !important;
+    font-size: 24px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #333;
+}
+.gene-login-wrapper button {
+    margin: 1rem 0;
+}
+.gene-login-wrapper .success-bg .mat-button-wrapper {
+    display: flex !important;
+}
+.gene-login-wrapper .or-div {
+    margin-top: 10px;
+}
+.gene-login-wrapper .line {
+    width: 51px;
+    height: 1px;
+    background-color: #ddd;
+}
+.gene-login-wrapper .google-img {
+    background-color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 2px;
+    margin-left: -10px;
+}
+.gene-login-wrapper .google-txt {
+    margin-left: auto;
+    margin-right: auto;
+}
+.gene-login-wrapper .message-block .error-message {
+    display: none;
+}
+.gene-login-wrapper .message-block .error-message:first-child {
+    display: block;
+}

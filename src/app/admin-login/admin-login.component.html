@@ -1,0 +1,77 @@
+<div class="gene-login gene-session pad-y-xl" style="background: #ddd">
+    <div fxLayout="row" fxLayoutAlign="center start">
+
+        <div fxLayout="column" fxFlex.xl="540px" fxFlex.lg="540px" fxFlex.md="540px" fxFlex.sm="540px" fxFlex.xs="100">
+
+            <mat-card class="gene-login-wrapper">
+                <div fxLayout="column" fxLayoutAlign="center center mrgn-b-md" style="background:#000">
+                    <div class="login-logo justify-content">
+                        <img src="assets/img/redeem.png">
+                    </div>
+                </div>
+                <div style="padding: 16px;">
+                    <div fxLayout="column" fxLayoutAlign="center center mrgn-b-md">
+                        <div class="justify-content">
+                            <h5>Admin Login</h5>
+                        </div>
+                    </div>
+                    <br>
+                    <form [formGroup]="form">
+                        <div fxLayout="column" fxLayoutAlign="start stretch">
+
+                            <mat-form-field appearance="outline">
+                                <mat-label>Enter email</mat-label>
+                                <input matInput type="email" name="email" formControlName="email">
+                            </mat-form-field>
+                            <div class="message-block">
+                                <small class="gene-block" *ngIf="form.controls['email'].hasError('required') && form.controls['email'].touched" class="warn-text error-message">
+                                    Please enter email.
+                                </small>
+                                <small class="gene-block" *ngIf="form.controls['email'].hasError('whitespace') && form.controls['email'].touched" class="warn-text error-message">
+                                    {{message.error[2]}}
+                                </small>
+                            
+                            
+                                <small class="gene-block" *ngIf="form.controls['email'].hasError('accountNotVerified')" class="warn-text error-message">
+                                    {{message.error[12]}}
+                                </small>
+                                <small class="gene-block" *ngIf="form.controls['email'].hasError('invalidEmail') && form.controls['email'].touched" class="warn-text error-message">
+                                    {{message.error[13]}}
+                                </small>
+
+                                <small class="gene-block" *ngIf="form.controls['email'].hasError('userNotActive')" class="warn-text error-message">
+                                    {{message.error[23]}}
+                                </small>
+                            
+                                <small class="gene-block" *ngIf="form.controls['email'].hasError('pattern') && form.controls['email'].touched" class="warn-text error-message">
+                                    {{message.error[2]}}
+                                </small>
+                            </div>
+
+                            <mat-form-field appearance="outline">
+                                <mat-label>Enter Password</mat-label>
+                                <input matInput (keydown.space)="$event.preventDefault();" (keyup.enter)="login(form.value)" maxlength="16" type="password" name="password" formControlName="password">
+                            </mat-form-field>
+                            <div class="message-block">
+                                <small class="gene-block" *ngIf="form.controls['password'].hasError('required') && form.controls['password'].touched" class="warn-text error-message">
+                                    Please enter password.
+                                </small>
+                                <small class="gene-block" *ngIf="form.controls['password'].hasError('invalidPassword') " class="warn-text error-message">
+                                    {{message.error[14]}}
+                                </small>
+                                
+                            </div>
+
+                            <!-- <div fxLayout="row" fxLayoutAlign="start center">
+                                <span fxFlex></span>
+                                <a [routerLink]="['/forgot-password']">Forgot Password?</a>
+                            </div> -->
+                            <button type="button" mat-raised-button [disabled]="!form.valid" (click)="login(form.value)">Login</button>
+                           
+                        </div>
+                    </form>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+</div>

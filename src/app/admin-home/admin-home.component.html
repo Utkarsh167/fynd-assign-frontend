@@ -1,0 +1,117 @@
+<div fxLayout="row" fxLayoutAlign="center start">
+
+    <div class="row" style="margin-top: 20px;">
+        <div  class="col-6">
+          <ng-multiselect-dropdown
+         
+          [placeholder]="'Select Genres'"
+          [settings]="dropdownSettings"
+          [data]="dropdownList"
+          [(ngModel)]="selectedItems"
+          (onSelect)="onItemSelect($event)"
+          (onSelectAll)="onSelectAll($event)"
+          (onDeSelectAll)="onItemDeSelectAll($event)"
+          (onDeSelect)="onItemDeSelect($event)"
+        >
+        </ng-multiselect-dropdown>
+      </div>
+      <div class="col-5"></div>
+    
+      </div>
+        
+       
+        <!-- <form class="example-form">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Email</mat-label>
+              <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+                     placeholder="Ex. pat@example.com">
+              <mat-hint>Errors appear instantly!</mat-hint>
+              <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                Please enter a valid email address
+              </mat-error>
+              <mat-error *ngIf="emailFormControl.hasError('required')">
+                Email is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </form> -->
+    
+          <div class="row col-12" style="margin-top: 10px">
+            <mat-form-field appearance="outline" class=" search--input col-7">
+              <input matInput (keydown.space)="$event.preventDefault();" type="text" [(ngModel)]="searchModel"
+                  id="search" placeholder="Search to type" autocomplete="off"  (keyup.enter)="searchMovies()">
+          </mat-form-field>
+          <button class="col-2" mat-raised-button color="primary" (click)="searchMovies()">Search</button>
+          <div class="col-1"></div>
+          <button class="col-2" mat-raised-button color="primary" (click)="resetFilter()">Reset</button>
+          </div>
+         
+    <mat-card fxFlex="100" class="mar-0 pad-0">
+        <div class="gene-card-content pad-t-none">
+            <div class="table-responsive">
+                <!-- <table class="table table-hover table-middle th-fw-light mb-0"> -->
+                <table class="table table-hover table-middle th-fw-light mb-0 vendor-mang-table" mat-table [dataSource]="dataSource">
+
+                    <!-- name Column -->
+                    <ng-container matColumnDef="name">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+                        <td mat-cell nowrap *matCellDef="let row"> {{row.name}}  </td>
+                    </ng-container>
+                    <!-- company Column -->
+                    <ng-container matColumnDef="director">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Director </th>
+                        <td mat-cell nowrap *matCellDef="let row"> {{row.director}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="99popularity">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> 99Popularity </th>
+                        <td mat-cell nowrap *matCellDef="let row"> {{row['99popularity']}} </td>
+                    </ng-container>
+                    <!-- email Column -->
+                    <ng-container matColumnDef="genre">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Genre </th>
+                        <td mat-cell nowrap *matCellDef="let row"> <span class="descriptionText column" *ngFor="let gen of row.genre">
+                            <span>&nbsp;&#9673;</span>
+                            {{" "+gen}}
+                        </span> </td>
+                    </ng-container>
+                    <!-- zipcode Column -->
+                  
+                    <ng-container matColumnDef="imdb_score">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Score </th>
+                        <td mat-cell nowrap *matCellDef="let row"> {{row.imdb_score}} </td>
+                    </ng-container>
+                   
+                   
+                   
+                    <!-- actions Column -->
+                    <ng-container matColumnDef="actions">
+                        <th mat-header-cell *matHeaderCellDef> Actions </th>
+                        <td mat-cell nowrap *matCellDef="let row">
+                            <div class="flex justify-content" fxLayoutGap="2%">
+                                <span class="material-icons" style="cursor:pointer" matTooltip="edit" (click)="openEditDialog(row._id)">edit </span>&nbsp;&nbsp;
+                                <span class="material-icons delete-icon" style="cursor:pointer"  matTooltip="delete" (click)="openDeleteDialog(row._id)"> delete </span>
+                            </div>
+                        </td>
+                    </ng-container>
+                  
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                </table>
+
+                <!-- <table>
+                    <tr *ngIf="noRecords">
+                        <td style="text-align: center;" [attr.colspan]="displayedColumns.length">
+                            No Records Found!
+                        </td>
+                    </tr>
+                </table> -->
+
+                <mat-paginator [length]="total" [pageIndex]="pageNo - 1" [pageSize]="limit" [pageSizeOptions]="[10, 20, 30, 40]" (page)="changePage($event)">
+                </mat-paginator>
+
+            </div>
+        </div>
+
+    </mat-card>
+</div>

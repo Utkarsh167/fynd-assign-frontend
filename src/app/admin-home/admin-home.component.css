@@ -1,0 +1,104 @@
+#app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    letter-spacing: 0.03em;
+    padding: 40px;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.dropdown{
+    width: 500px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* gap: 1.5em; */
+    margin: 18px;
+    padding: 12px;
+    background-color: #fbf8fb;
+    border-radius: 32px;
+    min-width: 280px;
+    min-height: 220px;
+    transition: 125ms;
+}
+.card .header {
+    display: flex;
+    flex-direction: column;
+    /* gap: 0.4em; */
+}
+.card .footer {
+    display: flex;
+    flex-direction: column;
+    /* gap: 0.4em; */
+}
+.card .headerText {
+    color: #404040;
+    font-size: 1.6em;
+    font-weight: 700;
+    border-bottom: 1px solid #bb6464;
+}
+.card .subHeaderText {
+    color: #808080;
+    font-size: 1em;
+    font-weight: 400;
+}
+.card .descriptionText {
+    color: #404040;
+    font-size: 1em;
+    font-weight: 400;
+}
+.card:hover {
+    transform: translate(0) scale(1.1);
+    background-color: #7882a4;
+    cursor: pointer;
+    transition: 125ms;
+}
+.card:hover .headerText {
+    color: #f2f2f2;
+}
+.card:hover .subHeaderText {
+    color: #f2f2f2;
+}
+.card:hover .descriptionText {
+    color: #f2f2f2;
+}
+.card:active {
+    transform: translate(0) scale(1);
+}
+
+.search--input icon--search{
+        position: absolute;
+        right: 0;
+        top: 2px;
+        cursor: pointer;
+        color: #666;
+        font-size: 21px;
+}
+input{
+    padding-right: 40px;
+}
+.mat-form-field{
+    background-color: #fff;
+}
+
+::ng-deep .table-hover td.mat-cell {
+    /* // padding: 0 !important; */
+     border-bottom-width: 1px !important;
+     border-bottom-style: solid !important;
+     vertical-align: inherit !important;
+ }
+ 
+ .delete-icon {
+     margin-left:-0.3rem;
+ }
+ .descriptionText {
+    color: #404040;
+    font-size: 1em;
+    font-weight: 400;
+    display: block;
+}

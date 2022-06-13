@@ -1,0 +1,145 @@
+/* You can add global styles to this file, and also import other style files */
+/* body
+{
+    margin: 0;
+    padding: 0;
+    background-color: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: 'Barlow Condensed' ,sans-serif;
+} */
+
+body {
+    font-family: 'Roboto', sans-serif;
+    top: 0;
+    left: 0;
+    margin: 0;
+    bottom: 0;
+    backface-visibility: hidden;
+    text-rendering: optimizeLegibility !important;
+    -webkit-font-smoothing: subpixel-antialiased !important;
+    overflow-x: hidden;
+
+}
+/*========|Session Pages|=========*/
+.gene-login {
+    background-image: url(../src/assets/img/gene-login.jpg);
+}
+.gene-registration-form {
+    background-image: url(../src/assets/img/gene-signup.jpg);
+}
+.gene-forgot {
+    background-image: url(../src/assets/img/gene-forgot.jpg);
+}
+.gene-lockscreen {
+    background-image: url(../src/assets/img/gene-lockscreen.jpg);
+}
+.gene-login, .gene-registration-form, .gene-forgot, .gene-lockscreen, .login-v2, .gene-registerV2, .gene-lockscreenV2, .gene-forgotpassV2 {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+body .gene-login-v2, body .gene-registerV2-wrap {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+.login-v2 {
+    background-image: url(../src/assets/img/login-bg.jpg);
+}
+.gene-registerV2 {
+    background-image: url(../src/assets/img/signup-bg.jpg);
+}
+.login-v2 .form-wrap-row, .gene-registerV2 .form-wrap-row {
+    padding-top: 8%;
+}
+.login-v2, .gene-registerV2, .gene-lockscreenV2, .gene-forgotpassV2, .gene-session {
+    min-height: 100vh;
+}
+.login-v2 .material-icons, .gene-registerV2 .material-icons, .gene-lockscreenV2 .material-icons, .gene-forgotpassV2 .material-icons {
+    font-size: 1rem;
+    vertical-align: text-bottom;
+}
+.gene-lockscreenV2 .form-wrap-row, .gene-forgotpassV2 .form-wrap-row {
+    padding-top: 10%;
+}
+.login-v2 .overlay-wrap, .gene-registerV2 .overlay-wrap {
+    position: relative;
+    overflow: hidden;
+    margin: 1rem 0;
+    border-radius: 10px;
+}
+.login-v2 .overlay-wrap .overlay-content, .gene-registerV2 .overlay-wrap .overlay-content {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    padding: 0;
+}
+.login-v2 .slider-bg-img, .gene-registerV2 .slider-bg-img {
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    min-height: 662px;
+    height: 100%;
+}
+.login-v2 .content-wrap, .gene-registerV2 .content-wrap {
+    padding: 15px;
+}
+.login-v2 .social-list button, .gene-registerV2 .social-list button {
+    font-weight: bold;
+    font-size: 22px;
+}
+.login-v2 .carousel, .gene-registerV2 .carousel {
+    margin-bottom: 0;
+}
+.gene-registerV2 .policy-links {
+    font-size: 0.75rem;
+}
+.gene-registerV2 .policy-links a {
+    text-decoration: underline;
+}
+.gene-forgotpassV2, .gene-lockscreenV2 {
+    background-image: url(../src/assets/img/lockscreen-bg.jpg);
+}
+.gene-forgotpassV2 .mat-card.gene-login-v2, .gene-lockscreenV2 .mat-card.gene-login-v2 {
+    overflow: visible;
+    padding-top: 4.6rem;
+    padding-bottom: 3.5rem;
+}
+.gene-forgotpassV2 .gene-btn-wrap button, .gene-lockscreenV2 .gene-btn-wrap button {
+    padding: 0;
+}
+.gene-forgotpassV2 .login-logo, .gene-lockscreenV2 .login-logo {
+    position: absolute;
+    top: -50px;
+    left: 0;
+    right: 0;
+}
+@media (max-width: 599px) {
+    .gene-login .mat-toolbar-row, .gene-registration-form .mat-toolbar-row, .gene-forgot .mat-toolbar-row, .gene-lockscreen .mat-toolbar-row, .login-v2 .mat-toolbar-row, .gene-registerV2 .mat-toolbar-row, .gene-lockscreenV2 .mat-toolbar-row, .gene-forgotpassV2 .mat-toolbar-row {
+        height: auto;
+   }
+}
+
+
+.full--width{width: 100%;}
+
+.mat-form-field-appearance-outline .mat-form-field-outline-thick {
+    color: #00b54f !important;
+}
+.mat-form-field-label {
+    color: #777777 !important;
+}
+.mat-focused .mat-form-field-label {
+    color: #00b54f !important;
+}
+.mat-form-field-appearance-outline .mat-form-field-infix {
+    padding: 0.5em 0 1em 0;
+}
+.mat-form-field-label-wrapper {
+    top: -1.12375em;
+    padding-top: 0.84375em;
+}

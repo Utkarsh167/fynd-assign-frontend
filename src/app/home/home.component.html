@@ -1,0 +1,88 @@
+<div id="app">
+   
+  <div class="row" style="margin-top: 20px;">
+    <div  class="col-6">
+      <ng-multiselect-dropdown
+     
+      [placeholder]="'Select Genres'"
+      [settings]="dropdownSettings"
+      [data]="dropdownList"
+      [(ngModel)]="selectedItems"
+      (onSelect)="onItemSelect($event)"
+      (onSelectAll)="onSelectAll($event)"
+      (onDeSelectAll)="onItemDeSelectAll($event)"
+      (onDeSelect)="onItemDeSelect($event)"
+    >
+    </ng-multiselect-dropdown>
+  </div>
+  <div class="col-5"></div>
+  <div class="col-1">
+    <button mat-raised-button [routerLink]="['admin-login']"> Admin Login</button>
+
+    <!-- <button mat-raised-button color="primary" (click)="resetFilter()">Admin Login</button> -->
+  </div>
+  </div>
+    
+   
+    <!-- <form class="example-form">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+                 placeholder="Ex. pat@example.com">
+          <mat-hint>Errors appear instantly!</mat-hint>
+          <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+            Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="emailFormControl.hasError('required')">
+            Email is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </form> -->
+
+      <div class="row col-12" style="margin-top: 10px">
+        <mat-form-field appearance="outline" class=" search--input col-7">
+          <input matInput (keydown.space)="$event.preventDefault();" type="text" [(ngModel)]="searchModel"
+              id="search" placeholder="Search to type" autocomplete="off" (keyup.enter)="searchMovies()">
+      </mat-form-field>
+      <button class="col-2" mat-raised-button color="primary" (click)="searchMovies()" >Search</button>
+      <div class="col-1"></div>
+      <button class="col-2" mat-raised-button color="primary" (click)="resetFilter()">Reset</button>
+      </div>
+     
+
+    <div class="container">
+        
+        <div class="card" *ngFor="let user of movieList | paginate: { itemsPerPage: 10, currentPage: pageNo, totalItems: total }">
+            <div class="header">
+                <span class="subHeaderText" style="overflow-wrap: break-word;">{{ user.name }}</span>
+                <span class="headerText">{{ user.director }}</span>
+            </div>
+            <div class="footer">
+                <p>
+                    <span class="fa fa-star checked"></span>
+                    <span class="descriptionText">{{ user.imdb_score }}</span>
+                </p>
+                <p>Genre</p>
+                <span class="descriptionText" *ngFor="let genre of user.genre">
+                    <span>&nbsp;&#9673;</span>
+                    {{" "+genre}}
+                </span>
+
+                <p>
+                    <span> 99Popularity</span>
+                    <span class="descriptionText">&nbsp;&nbsp;{{ user['99popularity'] }}</span>
+                </p>
+
+            </div>
+        </div>
+
+        
+
+    </div>
+    <p *ngIf="total==0">No data available! Try changing the filter or click reset</p>
+    <pagination-controls *ngIf="total>0" (pageChange)="pageChanged($event)" (pageBoundsCorrection)="pageChanged($event)" [maxSize]="9"
+    [directionLinks]="true"  [responsive]="true" previousLabel="Previous" nextLabel="Next"
+    screenReaderPaginationLabel="Pagination" screenReaderPageLabel="page"
+    screenReaderCurrentLabel="You're on page">
+</pagination-controls>
+</div>

@@ -1,0 +1,162 @@
+<div fxLayout="row" fxLayoutAlign="center start">
+    <div fxLayout="column">
+        <mat-card class="gene-login-wrapper">
+            <div fxLayout="column" fxLayoutAlign="center center mrgn-b-md" style="background:#000">
+                <p class="currentstep"> <span class="totalstep"></span> </p>
+                <!-- <div class="login-logo justify-content">
+                <img src="assets/img/doranto-img/logo.png">
+            </div> -->
+            </div>
+            <div style="padding: 16px;">
+                <div fxLayout="column" fxLayoutAlign="center center mrgn-b-md">
+                    <div class="justify-content">
+                        <h5>Add new Movie</h5>
+                    </div>
+                </div>
+                <br>
+                <form [formGroup]="form">
+                    <div fxLayout="column" fxLayoutAlign="start stretch">
+                        <div fxLayout="row" fxFlex="100">
+                            <div fxFlex="100">
+                                <mat-form-field fxFlex="95" appearance="outline">
+                                    <mat-label>Name*</mat-label>
+                                    <input matInput type="text" maxlength="256" (keyup)="firstCapitalize($event)"
+                                        name="name" style="text-transform: capitalize;" formControlName="name">
+                                </mat-form-field>
+                            </div>
+                            <div fxLayout="row" fxFlex="100">
+                                <div fxFlex="100">
+                                    <div class="message-block">
+                                        <small class="gene-block"
+                                            *ngIf="form.controls['name'].hasError('required') && form.controls['name'].touched"
+                                            class="warn-text error-message">
+                                            Please enter name
+                                        </small>
+                                        <small class="gene-block" *ngIf="form.controls['name'].hasError('pattern')"
+                                            class="warn-text error-message">
+                                            Please enter valid name
+                                        </small>
+                                        <small class="gene-block"
+                                            *ngIf="form.controls['name'].hasError('whitespace') && form.controls['name'].touched"
+                                            class="warn-text error-message">
+                                            Please enter valid name
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div fxFlex="100">
+                            <mat-form-field fxFlex="100" appearance="outline">
+                                <mat-label>Director*</mat-label>
+                                <input matInput type="text" maxlength="256" name="director"
+                                    (keyup)="firstCapitalize($event)" style="text-transform: capitalize;"
+                                    formControlName="director">
+                            </mat-form-field>
+                        </div>
+                        <div fxFlex="100">
+                            <div class="message-block">
+                                <small class="gene-block"
+                                    *ngIf="form.controls['director'].hasError('required') && form.controls['director'].touched"
+                                    class="warn-text error-message">
+                                    Please enter director name
+                                </small>
+                                <small class="gene-block" *ngIf="form.controls['director'].hasError('pattern')"
+                                    class="warn-text error-message">
+                                    Please enter a valid director name
+                                </small>
+
+                            </div>
+                        </div>
+
+                        <mat-form-field appearance="outline">
+                            <mat-label>Enter 99popularity*</mat-label>
+                            <!-- (keyup)="commonService.checkEmailStatusForDelete(form)" -->
+                            <input matInput type="number" maxlength="256" name="99popularity"
+                                formControlName="99popularity">
+                        </mat-form-field>
+                        <div class="message-block">
+                            <small class="gene-block"
+                                *ngIf="form.controls['99popularity'].hasError('required') && form.controls['99popularity'].touched"
+                                class="warn-text error-message">
+                                Please enter 99popularity value
+                            </small>
+
+                        </div>
+
+
+                        <mat-form-field appearance="outline">
+                            <mat-label>Enter Imdb score*</mat-label>
+                            <!-- (keyup)="commonService.firstCapitalize($event)"  -->
+                            <input maxlength="256" matInput type="number" style="text-transform: capitalize;"
+                                formControlName="imdb_score">
+                        </mat-form-field>
+                        <div class="message-block">
+                            <small class="gene-block"
+                                *ngIf="form.controls['imdb_score'].hasError('required') && form.controls['imdb_score'].touched"
+                                class="warn-text error-message">
+                                Please enter imdb score
+                            </small>
+
+                        </div>
+
+                        <div class="row" style="margin-top: 20px;">
+                            <div class="col-6">
+                                <!-- [(ngModel)]="selectedItems" -->
+
+                                <ng-multiselect-dropdown [placeholder]="'Select Genres'" [settings]="dropdownSettings"
+                                    [data]="dropdownList" formControlName="genre"
+                                    (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)"
+                                    (onDeSelectAll)="onItemDeSelectAll($event)" (onDeSelect)="onItemDeSelect($event)">
+                                </ng-multiselect-dropdown>
+                            </div>
+                            <div class="col-5"></div>
+
+                        </div>
+                        <div class="message-block">
+                            <small class="gene-block"
+                                *ngIf="form.controls['genre'].hasError('required') && form.controls['genre'].touched"
+                                class="warn-text error-message">
+                               Please add atlease one genre
+                            </small>
+                            
+                        </div>
+
+                        <mat-checkbox class="" (change)="showOptions($event)" formControlName="isOther"> Add custom
+                            Genre
+                        </mat-checkbox>
+
+                        <div *ngIf="form.value.isOther">
+
+                            <div fxFlex="100">
+                                <mat-form-field fxFlex="95" appearance="outline">
+                                    <mat-label>Other Genre*</mat-label>
+                                    <input matInput type="text" maxlength="256" (keyup)="firstCapitalize($event)"
+                                        name="other" style="text-transform: capitalize;" formControlName="other">
+                                </mat-form-field>
+                            </div>
+                            <div fxLayout="row" fxFlex="100">
+                                <div fxFlex="100">
+                                    <div class="message-block">
+                                        <small class="gene-block"
+                                            *ngIf="form.controls['other'].hasError('required') && form.controls['other'].touched"
+                                            class="warn-text error-message">
+                                            Please enter other genre
+                                        </small>
+                                        <small class="gene-block" *ngIf="form.controls['other'].hasError('pattern')"
+                                            class="warn-text error-message">
+                                            Please enter valid other genre
+                                        </small>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+                <button mat-raised-button [disabled]="!form.valid" (click)="addMovie()">Submit</button>
+
+            </div>
+        </mat-card>
+    </div>
+</div>
